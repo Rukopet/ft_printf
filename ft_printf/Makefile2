@@ -1,0 +1,42 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: egums <marvin@42.fr>                       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/11/13 18:51:14 by egums             #+#    #+#              #
+#    Updated: 2020/11/13 18:51:16 by egums            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+CC = gcc
+NAME = libftprintf.a
+NAMELIB = libft.a
+PATH = libft/
+FLAG = -Wall -Wextra -Werror
+
+SRC = ft_printf.c
+PATHSRC = srcs/
+
+INC = -I includes/ -I libft/
+
+OBJ = $(SRC:.c=.o)
+PATHOBJ = obj/
+
+all: $(NAME) $(SRC) $(NAMELIB)
+	$(CC) $(FLAG) main.c $(OBJ) $(INC) -L. -lft
+
+$(NAME): $(OBJ)
+#	ar rcs $(NAME) $(OBJ) $(NAMELIB)
+
+.c.o:
+	$(CC) -c $(FLAG) $(INC) $< -o $@
+
+clean:
+	rm -f $(OBJ)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
