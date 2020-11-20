@@ -15,9 +15,9 @@
 
 int main()
 {
-	int a;
+	//int a;
 	//char b;
-	a = 123456789;
+	//a = 123456789;
 
 	//printf ("1% +d", a);
 	//ft_printf ("%s\n%s", "123", "456"); //digits

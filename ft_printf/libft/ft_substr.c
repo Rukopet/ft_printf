@@ -38,7 +38,7 @@ static char	*solve(char const *s, unsigned start, size_t len)
 		if (start == (unsigned int)j)
 		{
 			sub_len = ft_strlen(s + j);
-			len = ((int)len <= sub_len) ? len : sub_len;
+			len = ((int)len <= sub_len) ? len : (size_t)sub_len;
 			if (!(result = alloc_empty(len + 1)))
 				return (NULL);
 			ret = result;

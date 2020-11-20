@@ -10,34 +10,28 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+CC = clang
 NAME = libftprintf.a
-PATHLIB = libft/
-NAMELIB = $(PATH)libft.a
+PATHLIB = ./libft/
+NAMELIB = $(PATHLIB)libft.a
 FLAG = -Wall -Wextra -Werror
-
-SRC = ft_printf.c
 PATHSRC = srcs/
-
-INC = -I includes/ -I libft/
-
-OBJ = $(SRC:.c=.o)
+SRC = $(PATHSRC)ft_printf.c
+INC = -I./includes/ -I./libft/
+OBJ = $(src:.c=.o)
 PATHOBJ = obj/
-
-#export PATH=/Users/egums/ft_printf/ft_printf
 
 all: $(NAME) $(SRC) $(NAMELIB)
 
 $(NAME): lib $(OBJ)
-	$(CC) $(FLAG) main.c $(OBJ) $(INC) -L. -lft
+	$(CC) $(FLAG) $(OBJ) $(INC) -L$(PATHLIB) -lft
 
 lib:
-	make -C$(PATHLIB)
-
-.PHONY: clean fclean all lib re
+	$(MAKE) -C$(PATHLIB)
+	mv libft/libft.a libft.a
 
 .c.o:
-	$(CC) -c $(FLAG) srcs/$< $(INC) -o $(PATHOBJ)$@
+	$(CC) -c $(FLAG) $< $(INC)
 
 clean:
 	rm -f $(OBJ)
@@ -46,6 +40,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
 
 #ar rcs $(NAME) $(OBJ) $(NAMELIB)
