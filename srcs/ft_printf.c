@@ -107,9 +107,9 @@ int				check_format(const char *format, va_list args, t_param *param)
 				ft_putchar_fd(*format, 1);
 				count++;
 			}
-		if (!*format)
-			break ;
-		format++;
+//		if (!*format)
+//			break ;
+//		format++;
 	}
 	return (count);
 }

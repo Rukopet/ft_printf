@@ -18,6 +18,8 @@ int				check_param(char c);
 int				check_minus(char *c);
 t_param			*default_param_t();
 
+int				ft_int_type
+
 
 
 
