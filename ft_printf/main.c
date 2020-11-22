@@ -22,5 +22,6 @@ int main()
 	//printf ("1% +d", a);
 	//ft_printf ("%s\n%s", "123", "456"); //digits
 	ft_printf ("%c\n%c   %c0", 65, 66, 67); //chars
+	printf ("\n*\n*\n%c\n%c   %c0", 65, 66, 67);
 	return 0;
 }

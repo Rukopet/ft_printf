@@ -10,35 +10,39 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = clang
+CC = gcc
 NAME = libftprintf.a
 PATHLIB = ./libft/
-NAMELIB = $(PATHLIB)libft.a
+NAMELIB = libft.a
 FLAG = -Wall -Wextra -Werror
-PATHSRC = srcs/
-SRC = $(PATHSRC)ft_printf.c
+PATHSRC = srcs
+SRCLIST = $(wildcard $(dir)/*.c)
+SRC = $(foreach dir, $(PATHSRC), $(SRCLIST))
 INC = -I./includes/ -I./libft/
 OBJ = $(src:.c=.o)
 PATHOBJ = obj/
 
+.PHONY: all lib clean fclean re
+
 all: $(NAME) $(SRC) $(NAMELIB)
 
 $(NAME): lib $(OBJ)
-	$(CC) $(FLAG) $(OBJ) $(INC) -L$(PATHLIB) -lft
+	$(CC) $(FLAG) $(SRC) main.c $(INC) -L. -lft
+	ar rcs $(NAME) $(OBJ) $(NAMELIB)
 
 lib:
-	$(MAKE) -C$(PATHLIB)
+	$(MAKE) bonus -C$(PATHLIB)
 	mv libft/libft.a libft.a
 
 .c.o:
 	$(CC) -c $(FLAG) $< $(INC)
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(NAMELIB)
+	$(MAKE) clean -C$(PATHLIB)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAMELIB)
+	$(MAKE) fclean -C$(PATHLIB)
 
 re: fclean all
-
-#ar rcs $(NAME) $(OBJ) $(NAMELIB)
