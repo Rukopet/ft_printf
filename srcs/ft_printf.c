@@ -12,27 +12,16 @@
 
 #include "ft_printf.h"
 #include "libft.h"
+#include "func.h"
+#include "out.h"
 #include <stdio.h>
+#include <stdarg.h>
 
 int i = 0;
-
 #define TEST printf("%d", i++);
 
-t_param			*default_param_t()
-{
-	t_param		*ret;
-
-	if(!(ret = malloc(sizeof(t_param) * 1)))
-		return (NULL);
-	ret->width = -1;
-	ret->width_flag = 0;
-
-	ret->precision = 1;
-	ret->precision_flag = 0;
-	return (ret);
-}
-
-int				check_iteration(const char *format, va_list args)
+int				check_iteration_out(const char *format, va_list args, t_param
+*param)
 {
 	char		*var;
 	int			count;
@@ -43,7 +32,7 @@ int				check_iteration(const char *format, va_list args)
 	{
 		var = va_arg(args, char*);
 		//printf("%s\n\n", var);
-		count = ft_putstr_fd(var, 1);
+		count = ft_putstr_int(var, 1);
 	}
 	if (*format == 'c')
 	{
@@ -53,12 +42,47 @@ int				check_iteration(const char *format, va_list args)
 	if (*format == 'd' || *format == 'i')
 	{
 		int_var = va_arg(args, int);
-		count = ft_putstr_fd(ft_itoa(int_var), 1);
+		count = ft_putstr_int(ft_itoa(int_var), 1);
 	}
 	return (0);
 }
 
-int				check_format(const char *format, va_list args)
+int				check_iteration_params(const char *format, va_list args,
+		t_param *param)
+{
+	char		*tmp;
+	char		type;
+	short		flag_w;
+
+	tmp = (char *)format;
+	type = ft_param(tmp);
+	flag_w = 0;
+	while (!check_param(*tmp))
+	{
+		if (*tmp == '0' && check_minus((char *)format))
+		{
+			param->zero = 1;
+			tmp++;
+		}
+		else if (*tmp == '-')
+		{
+			param->minus = 1;
+			tmp++;
+		}
+		else if (*tmp == '.')
+		{
+			tmp++;
+			if (*tmp == '*')
+				param->precision = va_arg(args, int);
+			else
+				param->precision = ft_atoi(tmp);
+		}
+	}
+	param->pointer = tmp;
+	return (0);
+}
+
+int				check_format(const char *format, va_list args, t_param *param)
 {
 	int			count;
 
@@ -67,7 +91,8 @@ int				check_format(const char *format, va_list args)
 	{
 		if (*format == '%' && *format + 1 != '%')
 		{
-			count += check_iteration(format + 1, args);
+			check_iteration_params(format + 1, args, param);
+			count += check_iteration_out(param->pointer, args, param);
 			format++;
 		}
 		else
@@ -100,7 +125,7 @@ int			ft_printf(const char *format, ...)
 	begin = format;
 	param = default_param_t();
 	va_start(args, format);
-	ret = check_format(format, args);
+	ret = check_format(format, args, param);
 	va_end(args);
 	return (ret);
 }
