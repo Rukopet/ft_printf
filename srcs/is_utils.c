@@ -31,6 +31,7 @@ t_param			*default_param_t()
 	ret->type = 0;
 	ret->pointer = NULL;
 	ret->count = 0;
+	ret->sign_int = 1;
 	return (ret);
 }
 

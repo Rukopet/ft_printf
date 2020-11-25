@@ -24,9 +24,11 @@ typedef struct		s_param
 	char 			minus;
 	char 			zero;
 	char 			type;
+	char 			sign_int;
 	const char 		*pointer;
 
 	int				count;
+
 }					t_param;
 
 	/*

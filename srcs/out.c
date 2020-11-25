@@ -28,7 +28,7 @@ int		ft_putstr_int(char *s, int fd)
 	return (count);
 }
 
-static int	ft_itoa_base_count(unsigned long int nb, unsigned int base)
+static int	ft_itoa_base_count(long int nb, int base)
 {
 	int 	i;
 
@@ -43,12 +43,17 @@ static int	ft_itoa_base_count(unsigned long int nb, unsigned int base)
 	return (i);
 }
 
-char		*ft_itoa_base(unsigned long int nb, unsigned int base)
+char		*ft_itoa_base(long int nb, int base, char *sign)
 {
-	char	*ret;
-	char	*numbers;
-	int		i;
+	char *ret;
+	char *numbers;
+	int i;
 
+	if (nb < 0)
+	{
+		*sign = '-';
+		nb *= -1;
+	}
 	numbers = ft_strdup("0123456789abcdef");
 	ret = NULL;
 	i = ft_itoa_base_count(nb, base);
