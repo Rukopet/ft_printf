@@ -13,12 +13,20 @@
 #ifndef		FUNC_H
 #define		FUNC_H
 
-char 			ft_param(char *c);
+char 			ft_param(const char *c);
 int				check_param(char c);
-int				check_minus(char *c);
 t_param			*default_param_t();
+int				check_minus_char(char c, t_param *param);
 
-int				ft_int_type
+void			check_minus(const char *c, t_param *param);
+void			check_zero(const char *c, t_param *param);
+void			check_precision(const char *c, va_list args, t_param *param);
+void			check_width(const char *c, va_list args, t_param *param);
+
+int				string_char_out(va_list args, t_param *param);
+
+
+//int				ft_int_type
 
 
 

@@ -20,12 +20,13 @@ typedef struct		s_param
 {
 	int				precision;
 	int				width;
-	int				width_flag;
-	int				precision_flag;
+
 	char 			minus;
 	char 			zero;
 	char 			type;
 	const char 		*pointer;
+
+	int				count;
 }					t_param;
 
 	/*
@@ -49,5 +50,12 @@ int			check_iteration_out(const char *format, va_list args,
 int			check_iteration_params(const char *format, va_list , t_param
 *param);
 int			check_format(const char *format, va_list args, t_param *param);
+int			ft_putstr_int(char *s, int fd);
+
+
+
+
+
+void out_param(t_param *param);
 
 #endif
