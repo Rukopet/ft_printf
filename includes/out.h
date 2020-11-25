@@ -13,7 +13,9 @@
 #ifndef		OUT_H
 #define		OUT_H
 
-int		ft_putstr_int(char *s, int fd);
+#include <stdarg.h>
+
+
 
 #endif
 

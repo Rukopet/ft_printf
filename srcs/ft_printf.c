@@ -15,7 +15,6 @@
 #include "ft_printf.h"
 #include "libft.h"
 #include "func.h"
-#include "out.h"
 #include <stdio.h>
 #include <stdarg.h>
 
@@ -28,6 +27,9 @@ int				check_iteration_out(const char *format, va_list args, t_param
 {
 	if (*format == 's')
 		string_char_out(args, param);
+	if (*format == 'd' || *format == 'i')
+		digits_int_out(args, param);
+
 //	{
 //		var = va_arg(args, char*);
 //		param->count += ft_putstr_int(var, 1);
