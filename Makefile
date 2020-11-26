@@ -14,8 +14,8 @@ CC = gcc
 NAME = libftprintf.a
 PATHLIB = ./libft
 NAMELIB = libft.a
-FLAG = -Wall -Werror
-PATHSRC = srcs
+FLAG = -Wall -Wextra -Werror
+PATHSRC = srcs digits
 SRCLIST = $(wildcard $(dir)/*.c)
 LIBOBJ = $(wildcard $(PATHLIB)/*.o)
 SRC = $(foreach dir, $(PATHSRC), $(SRCLIST))
@@ -24,7 +24,7 @@ OBJ = $(SRC:.c=.o)
 
 .PHONY: all lib clean fclean re
 
-all: $(NAME) $(SRC) $(NAMELIB)
+all: $(NAME) $(SRC)
 
 $(NAME): lib $(OBJ)
 	$(CC) $(FLAG) $(SRC) main.c $(INC) -L$(PATHLIB) -lft

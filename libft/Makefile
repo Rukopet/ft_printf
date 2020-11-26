@@ -31,16 +31,21 @@ BOBJ = $(BSRC:.c=.o)
 
 all: $(NAME) $(SRC)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(BOBJ) libft.h
+ifdef $(BONUS_RULE)
+	ar rcs $(NAME) $(OBJ) $(BOBJ)
+else
 	ar rcs $(NAME) $(OBJ)
+endif
 
-bonus: all $(BOBJ)
-	ar rcs $(NAME) $(BOBJ)
+bonus: RULE all
 
-.c.o:
+RULE: BONUS_RULE ?= TRUE
+
+%.o: %.c libft.h
 	$(CC) -c $(FLAG) $< $(INC)
 
-.PHONY: bonus all clean fclean re
+.PHONY: RULE bonus all clean fclean re
 
 clean:
 	rm -f $(OBJ) $(BOBJ)

@@ -14,7 +14,6 @@
 
 #include "ft_printf.h"
 #include "libft.h"
-#include "func.h"
 #include <stdio.h>
 #include <stdarg.h>
 
