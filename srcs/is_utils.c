@@ -15,6 +15,7 @@
 #include "ft_printf.h"
 #include <stdarg.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #define PRINT out_param(ret);
 
@@ -24,14 +25,16 @@ t_param			*default_param_t()
 
 	if(!(ret = malloc(sizeof(t_param))))
 		return (NULL);
-	ret->width = -1;
-	ret->precision = -1;
+	ret->width = 0;
+	ret->precision = 0;
 	ret->minus = 0;
 	ret->zero = 0;
 	ret->type = 0;
 	ret->pointer = NULL;
 	ret->count = 0;
 	ret->sign_int = 1;
+	ret->precision_minus = 0;
+	ret->width_minus = 0;
 	return (ret);
 }
 
@@ -46,11 +49,15 @@ int				check_param(char c)
 
 void			check_minus(const char *c, t_param *param)
 {
-	while (*c != '%' && *c && !check_param(*c))
+	char		i;
+
+	i = 0;
+	while (*c != '%' && *c && !check_param(*c) && i != 2)
 	{
 		if (*c == '-')
 			param->minus = 1;
 		c++;
+		i++;
 	}
 }
 

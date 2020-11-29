@@ -86,7 +86,7 @@ void		digits_int_out(va_list args, t_param *param)
 
 	number = va_arg(args, int);
 	string = ft_itoa_base(number, 10, &param->sign_int);
-	if (param->width != -1 && param->precision == -1)
+	if (param->width != 0 && param->precision == 0)
 	{
 		check_width_len(string, param);
 		if (param->minus)

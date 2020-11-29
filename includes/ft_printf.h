@@ -19,7 +19,10 @@
 typedef struct		s_param
 {
 	int				precision;
+	char 			precision_minus;
+
 	int				width;
+	char			width_minus;
 
 	char 			minus;
 	char 			zero;
@@ -30,7 +33,6 @@ typedef struct		s_param
 	int				count;
 
 }					t_param;
-
 	/*
 	**Meaning of  width flags
 	**(0) - No check
@@ -40,10 +42,10 @@ typedef struct		s_param
 	**(4) - Width have have '-' param
 	**
 	**Meaning if precision flags
-	**(0) - No check
-	**(1) - Precision spec turned like int arg with '*' spec
-	**(2) - Precision spec turned link int value in *format
-	**default precision is 1
+	**(0) - dont have precision in format
+	**(1) - precision have minus
+	**(2) - precision check and its checked like normal
+	**(3) - precision have 0 value
 	*/
 
 int				ft_printf(const char *format, ...);
@@ -66,7 +68,11 @@ void			check_width(const char *c, va_list args, t_param *param);
 
 char			*ft_itoa_base(long int nb, int base, char *sign);
 int				ft_putstr_int(char *s, int fd);
-void			string_char_out(va_list args, t_param *param);
+
+void			string_char_out(char *string,t_param *param);
+void 			take_arg(va_list args, t_param *param);
+void			check_char(va_list args, t_param *param);
+
 void			digits_int_out(va_list args, t_param *param);
 int				out_spaces(char sym, int len);
 

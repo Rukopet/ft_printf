@@ -14,8 +14,8 @@ CC = gcc
 NAME = libftprintf.a
 PATHLIB = ./libft
 NAMELIB = libft.a
-FLAG = -Wall -Wextra -Werror
-PATHSRC = srcs digits
+FLAG = -Wall -Wextra
+PATHSRC = srcs digits chars
 SRCLIST = $(wildcard $(dir)/*.c)
 LIBOBJ = $(wildcard $(PATHLIB)/*.o)
 SRC = $(foreach dir, $(PATHSRC), $(SRCLIST))
@@ -29,6 +29,9 @@ all: $(NAME) $(SRC)
 $(NAME): lib $(OBJ)
 	$(CC) $(FLAG) $(SRC) main.c $(INC) -L$(PATHLIB) -lft
 	ar rcs $(NAME) $(OBJ) $(LIBOBJ)
+
+test: all
+	$(CC) $(FLAG) $(SRC) main_test.c $(INC) -L$(PATHLIB) -lft
 
 .c.o:
 	$(CC) -c $(FLAG) $< $(INC) -o $@

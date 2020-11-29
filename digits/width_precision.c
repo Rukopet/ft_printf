@@ -19,7 +19,14 @@ void		check_precision_len(char *string, t_param *param)
 	int 	number;
 
 	number = ft_strlen(string);
+
 	param->precision = (param->precision <= number) ? number : param->precision;
+	if (param->precision_minus == 1 && param->zero == 1)
+	{
+		param->precision = param->width - number;
+		if (param->sign_int == '-' && param->width > 0)
+		param->precision--;
+	}
 }
 
 void		if_param_minus(t_param *param, char *string)
@@ -95,7 +102,7 @@ void		check_param_wd(t_param *param, char *string)
 	int		len;
 
 	len = ft_strlen(string);
-	if (param->width != -1 && param->precision != -1)
+	if (param->width != 0 && param->precision != 0)
 	{
 		check_width_len(string, param);
 		check_precision_len(string, param);

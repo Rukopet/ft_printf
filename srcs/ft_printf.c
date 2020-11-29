@@ -25,9 +25,11 @@ int				check_iteration_out(const char *format, va_list args, t_param
 *param)
 {
 	if (*format == 's')
-		string_char_out(args, param);
+		take_arg(args, param);
 	if (*format == 'd' || *format == 'i')
 		digits_int_out(args, param);
+	if (*format == 'c')
+		check_char(args, param);
 
 //	{
 //		var = va_arg(args, char*);
@@ -55,8 +57,8 @@ int				check_iteration_params(const char *format, va_list args,
 	param->type = ft_param(tmp);
 	check_minus(format, param);
 	check_zero(format, param);
-	check_precision(format, args, param);
 	check_width(format, args, param);
+	check_precision(format, args, param);
 	while (!check_param(*tmp))
 		tmp++;
 	param->pointer = tmp;
