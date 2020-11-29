@@ -105,7 +105,7 @@ int				check_format(const char *format, va_list args, t_param *param)
 
 	while(*format)
 	{
-		if (*format == '%' && *format + 1 != '%')
+		if (*format == '%' && *(format + 1) != '%')
 		{
 			check_iteration_params(format + 1, args, param);
 			param->count += check_iteration_out(param->pointer, args, param);

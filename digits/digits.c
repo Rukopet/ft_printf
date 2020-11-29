@@ -83,7 +83,10 @@ void		digits_int_out(long long int digit, t_param *param)
 {
 	char 	*string;
 
-	string = ft_itoa_base(digit, 10, &param->sign_int, param);
+	if (param->type != 'x' && param->type != 'X')
+		string = ft_itoa_base(digit, 10, &param->sign_int, param);
+	else
+		string = ft_itoa_base(digit, 16, &param->sign_int, param);
 	if (param->width != 0 && param->precision == 0)
 	{
 		check_width_len(string, param);

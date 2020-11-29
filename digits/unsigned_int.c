@@ -30,7 +30,7 @@ void 		take_int_args(va_list args,t_param *param)
 		param->minus = 0;
 		number1 = va_arg(args, unsigned int);
 		if (param->type == 'X' || param->type == 'x')
-			ft_hex(number1, param);
+			digits_int_out(number1, param);
 		else
 			digits_int_out(number1, param);
 		return ;
