@@ -44,7 +44,7 @@ static int	ft_itoa_base_count(long int nb, int base)
 	return (i);
 }
 
-char		*ft_itoa_base(long int nb, int base, char *sign)
+char		*ft_itoa_base(long int nb, int base, char *sign, t_param *param)
 {
 	char *ret;
 	char *numbers;
@@ -55,7 +55,11 @@ char		*ft_itoa_base(long int nb, int base, char *sign)
 		*sign = '-';
 		nb *= -1;
 	}
-	numbers = ft_strdup("0123456789abcdef");
+
+	if (param->type == 'X')
+		numbers = ft_strdup("0123456789ABCDEFf");
+	else
+		numbers = ft_strdup("0123456789abcdef");
 	ret = NULL;
 	i = ft_itoa_base_count(nb, base);
 	if (!(ret = (char*)malloc(sizeof(char) * i + 1)))

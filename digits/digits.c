@@ -79,13 +79,11 @@ void		check_width_len(char *string, t_param *param)
 	param->width = (param->width < number) ? number : param->width;
 }
 
-void		digits_int_out(va_list args, t_param *param)
+void		digits_int_out(long long int digit, t_param *param)
 {
-	int 	number;
 	char 	*string;
 
-	number = va_arg(args, int);
-	string = ft_itoa_base(number, 10, &param->sign_int);
+	string = ft_itoa_base(digit, 10, &param->sign_int, param);
 	if (param->width != 0 && param->precision == 0)
 	{
 		check_width_len(string, param);

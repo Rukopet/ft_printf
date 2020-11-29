@@ -106,12 +106,23 @@ void 		take_arg(va_list args, t_param *param)
 	char 	*tmp;
 
 	tmp = va_arg(args, char *);
-//	printf ("pre %d wid %d min %d", param->precision, param->width,
-//		 param->minus);
+//	printf ("pre %d\n wid %d\n minus %d\n pre_min %d\n wid_min %d\n",
+//		 param->precision,
+//		 param->width,
+//		 param->minus, param->precision_minus, param->width_minus);
 	if (tmp == NULL)
 	{
 		param->count += ft_putstr_int("(null)", 1);
 		return ;
 	}
+//	printf ("prcision_minus%d\nwidth_minus%d\n", param->precision_minus,
+//		 param->width_minus);
+	if (param->precision_minus == 3)
+	{
+		ft_precision_zero(param);
+		return ;
+	}
+	if (param->width_minus == 3)
+		return ;
 	string_char_out(tmp, param);
 }

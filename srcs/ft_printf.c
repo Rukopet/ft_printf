@@ -27,9 +27,24 @@ int				check_iteration_out(const char *format, va_list args, t_param
 	if (*format == 's')
 		take_arg(args, param);
 	if (*format == 'd' || *format == 'i')
-		digits_int_out(args, param);
+	{
+		param->type = 'i';
+		take_int_args(args, param);
+	}
+
 	if (*format == 'c')
 		check_char(args, param);
+	if (*format == 'u')
+	{
+		param->type = 'u';
+		take_int_args(args, param);
+	}
+	if (*format == 'x' || *format == 'X')
+	{
+		param->type = *format;
+		take_int_args(args, param);
+	}
+
 
 //	{
 //		var = va_arg(args, char*);
