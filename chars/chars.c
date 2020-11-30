@@ -38,9 +38,9 @@ void 		check_char(va_list args, t_param *param)
 	char	b[2];
 
 	tmp = va_arg(args, int);
+	param->type = 'c';
 	b[0] = tmp;
 	b[1] = '\0';
 	param->precision = 1;
-//	param->zero = 0;
 	string_char_out(&tmp, param);
 }

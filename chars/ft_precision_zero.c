@@ -16,7 +16,7 @@ void 		ft_precision_zero(t_param *param)
 {
 	while (param->width != 0)
 	{
-		param->count += ft_putstr_int(" ", 1);
+		param->count += ft_putstr_chars(" ", 1, param);
 		param->width--;
 	}
 }

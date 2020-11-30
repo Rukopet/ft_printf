@@ -92,17 +92,7 @@ int main()
 
 
 
-	a = printf ("[%12.u]\n", -123456789);
-	b = ft_printf ("[%12.u]\n", -123456789);
-	printf ("orig = %d\n  my = %d\n\n", a, b);
 
-	a = printf ("[%.*s]\n", 0, "hello");
-	b = ft_printf ("[%.*s]\n", 0, "hello");
-	printf ("orig = %d\n  my = %d\n\n", a, b);
-
-	a = printf ("[%7.*s]\n", 0, "hello");
-	b = ft_printf ("[%7.*s]\n", 0, "hello");
-	printf ("orig = %d\n  my = %d\n\n", a, b);
 //
 //	a = printf ("[%1p]\n", "hello");
 //	b = ft_printf ("[%1p]\n", "hello");
@@ -128,9 +118,67 @@ int main()
 //	b = ft_printf ("[%.p]\n", "hello");
 //	printf ("orig = %d\n  my = %d\n\n", a, b);
 
-	a = printf ("[%*s]\n", -3, "hello");
-	b = ft_printf ("[%*s]\n", -3, "hello");
+
+
+	a = printf ("[%-12.5x]\n", -123456789);
+	b = ft_printf ("[%-12.5x]\n", -123456789);
 	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%-12.0X]\n", 123456789);
+	b = ft_printf ("[%-12.0X]\n", 123456789);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%*x]\n", -12, 123456789);
+	b = ft_printf ("[%*x]\n", -12, 123456789);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%-12.5X]\n", -123456789);
+	b = ft_printf ("[%-12.5X]\n", -123456789);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%12.5x]\n", 123456789);
+	b = ft_printf ("[%12.5x]\n", 123456789);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%*X]\n", -12, 123456789);
+	b = ft_printf ("[%*X]\n", -12, 123456789);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%*.X]\n", -12, 123456789);
+	b = ft_printf ("[%*.X]\n", -12, 123456789);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%.X]\n", 123456789);
+	b = ft_printf ("[%.X]\n", 123456789);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%.p]\n", "123456789");
+	b = ft_printf ("[%.p]\n", "123456789");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%-20.p]\n", "123456789");
+	b = ft_printf ("[%-20.p]\n", "123456789");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%-12p]\n", "123456789");
+	b = ft_printf ("[%-12p]\n", "123456789");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%5c]\n", 0);
+	b = ft_printf ("[%5c]\n", 0);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+//	a = printf ("[%.*s]\n", 0, "hello");
+//	b = ft_printf ("[%.*s]\n", 0, "hello");
+//	printf ("orig = %d\n  my = %d\n\n", a, b);
+//
+//	a = printf ("[%7.*s]\n", 0, "hello");
+//	b = ft_printf ("[%7.*s]\n", 0, "hello");
+//	printf ("orig = %d\n  my = %d\n\n", a, b);
+//
+//
+//	a = printf ("[%*s]\n", -3, "hello");
+//	b = ft_printf ("[%*s]\n", -3, "hello");
+//	printf ("orig = %d\n  my = %d\n\n", a, b);
 
 	return 0;
 }
@@ -139,13 +187,13 @@ void out_param(t_param *param)
 {
 	printf ("\n precision - %i", param->precision);
 	printf ("\n width - %i", param->width);
-//	printf ("\n width_flag - %i", param->width_flag);
-//	printf ("\n precision_flag - %i", param->precision_flag);
+	printf ("\n width_minus - %i", param->width_minus);
+	printf ("\n precision_minus - %i", param->precision_minus);
 	printf ("\n char minus - %i", param->minus);
 	printf ("\n char type - %i", param->type);
 	printf ("\n char zero - %i", param->zero);
 	printf ("\n int count - %i", param->count);
-
+	printf ("\n char type - %i", param->count);
 //int				precision;
 //int				width;
 //int				width_flag;

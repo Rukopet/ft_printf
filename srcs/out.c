@@ -29,7 +29,31 @@ int		ft_putstr_int(char *s, int fd)
 	return (count);
 }
 
-static int	ft_itoa_base_count(long int nb, int base)
+int		ft_putstr_chars(char *s, int fd, t_param *param)
+{
+	int count;
+
+	count = 0;
+
+	if (s[0] == '\0' && param->type == 'c')
+	{
+		ft_putchar_fd(s[0], fd);
+		count++;
+		return (count);
+	}
+	if (!s)
+		return (count);
+	while (*s)
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+		count++;
+	}
+
+	return (count);
+}
+
+static int	ft_itoa_base_count(long int nb, int base, t_param *param)
 {
 	int 	i;
 
@@ -41,14 +65,17 @@ static int	ft_itoa_base_count(long int nb, int base)
 		nb = nb / base;
 		i++;
 	}
+	if (param->type == 'p')
+		i = i + 2;
 	return (i);
 }
 
 char		*ft_itoa_base(long int nb, int base, char *sign, t_param *param)
 {
-	char *ret;
-	char *numbers;
-	int i;
+	char	*ret;
+	char	*numbers;
+	int		i;
+	int 	check;
 
 	if (nb < 0)
 	{
@@ -57,18 +84,24 @@ char		*ft_itoa_base(long int nb, int base, char *sign, t_param *param)
 	}
 
 	if (param->type == 'X')
-		numbers = ft_strdup("0123456789ABCDEFf");
+		numbers = ft_strdup("0123456789ABCDEF");
 	else
 		numbers = ft_strdup("0123456789abcdef");
 	ret = NULL;
-	i = ft_itoa_base_count(nb, base);
+	i = ft_itoa_base_count(nb, base, param);
 	if (!(ret = (char*)malloc(sizeof(char) * i + 1)))
 		return (NULL);
 	ret[i--] = '\0';
-	while (i >= 0)
+	check = (param->type == 'p') ? 2 : 0;
+	while (i >= check)
 	{
 		ret[i--] = numbers[nb % base];
 		nb = nb / base;
+	}
+	if (check == 2)
+	{
+		ret[0] = '0';
+		ret[1] = 'x';
 	}
 	free(numbers);
 	return (ret);

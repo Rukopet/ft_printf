@@ -16,11 +16,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int			out_with_precision(char *c, int len)
+static int	out_with_precision(char *c, int len, t_param *param)
 {
 	int		count;
 
 	count = 0;
+	if (*c == 0 && param->type == 'c')
+	{
+		ft_putchar_fd(*c, 1);
+		count++;
+		return (count);
+	}
 	while (*c && len)
 	{
 		ft_putchar_fd(*c, 1);
@@ -51,16 +57,16 @@ void		string_no_width(char *tmp, t_param *param, char tmp_sym)
 
 	len = ft_strlen(tmp);
 	if (param->width == 0 && param->precision != 0)
-		param->count += out_with_precision(tmp, param->precision);
+		param->count += out_with_precision(tmp, param->precision, param);
 	if (param->width == 0 && param->precision == 0)
-		param->count += ft_putstr_int(tmp, 1);
+		param->count += ft_putstr_chars(tmp, 1, param);
 	if (param->width && param->precision == 0 &&  param->precision_minus != 3)
 	{
 
 		param->width = (param->width < len) ? len : param->width;
 		if (param->minus)
 		{
-			param->count += out_with_precision(tmp, param->width);
+			param->count += out_with_precision(tmp, param->width, param);
 			param->width = param->width - len;
 			param->count += out_spaces(tmp_sym, param->width);
 		}
@@ -68,7 +74,7 @@ void		string_no_width(char *tmp, t_param *param, char tmp_sym)
 		{
 			param->width = param->width - len;
 			param->count += out_spaces(tmp_sym, param->width);
-			param->count += out_with_precision(tmp, param->width);
+			param->count += out_with_precision(tmp, param->width, param);
 		}
 	}
 }
@@ -84,7 +90,7 @@ void		string_char_out(char *string, t_param *param)
 
 		if (param->minus)
 		{
-			param->count += out_with_precision(string, param->precision);
+			param->count += out_with_precision(string, param->precision, param);
 			param->width = (param->width >= param->precision) ?
 					param->width - param->precision : 0;
 			param->count += out_spaces(tmp_sym, param->width);
@@ -94,7 +100,7 @@ void		string_char_out(char *string, t_param *param)
 			param->width = (param->width >= param->precision) ?
 					param->width - param->precision : 0;
 			param->count += out_spaces(tmp_sym, param->width);
-			param->count += out_with_precision(string, param->precision);
+			param->count += out_with_precision(string, param->precision, param);
 		}
 	}
 	else
@@ -106,17 +112,11 @@ void 		take_arg(va_list args, t_param *param)
 	char 	*tmp;
 
 	tmp = va_arg(args, char *);
-//	printf ("pre %d\n wid %d\n minus %d\n pre_min %d\n wid_min %d\n",
-//		 param->precision,
-//		 param->width,
-//		 param->minus, param->precision_minus, param->width_minus);
 	if (tmp == NULL)
 	{
-		param->count += ft_putstr_int("(null)", 1);
+		param->count += ft_putstr_chars("(null)", 1, param);
 		return ;
 	}
-//	printf ("prcision_minus%d\nwidth_minus%d\n", param->precision_minus,
-//		 param->width_minus);
 	if (param->precision_minus == 3)
 	{
 		ft_precision_zero(param);

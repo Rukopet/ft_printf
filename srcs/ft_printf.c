@@ -31,7 +31,6 @@ int				check_iteration_out(const char *format, va_list args, t_param
 		param->type = 'i';
 		take_int_args(args, param);
 	}
-
 	if (*format == 'c')
 		check_char(args, param);
 	if (*format == 'u')
@@ -44,7 +43,11 @@ int				check_iteration_out(const char *format, va_list args, t_param
 		param->type = *format;
 		take_int_args(args, param);
 	}
-
+	if (*format == 'p')
+	{
+		param->type = 'p';
+		take_int_args(args, param);
+	}
 
 //	{
 //		var = va_arg(args, char*);
@@ -79,8 +82,6 @@ int				check_iteration_params(const char *format, va_list args,
 	param->pointer = tmp;
 
 	return (0);
-
-
 
 //		if (*tmp == '0' && check_minus((char *)format))
 //		{

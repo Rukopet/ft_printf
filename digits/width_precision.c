@@ -19,7 +19,6 @@ void		check_precision_len(char *string, t_param *param)
 	int 	number;
 
 	number = ft_strlen(string);
-
 	param->precision = (param->precision <= number) ? number : param->precision;
 	if (param->precision_minus == 1 && param->zero == 1)
 	{

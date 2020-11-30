@@ -60,7 +60,8 @@ void			check_precision(const char *c, va_list args, t_param *param)
 		return ;
 	}
 	param->precision = (param->precision < 0) ? 0 :	param->precision;
-	param->precision_minus = (param->precision < 0) ? 1 : 0;
+	param->precision_minus = (param->precision < 0) ? 1 :
+			param->precision_minus;
 
 }
 
@@ -73,7 +74,7 @@ void			check_width(const char *c, va_list args, t_param *param)
 		if (*c == '*')
 		{
 			param->width = va_arg(args,	int);
-			param->width_minus = (param->width == 0) ? 3 : param->width_minus;
+			param->width_minus = (param->width == 0) ? 3 : 2;
 			param->minus = (param->width < 0) ? 1 : param->minus;
 			param->width = (param->width < 0) ?
 					param->width * -1 : param->width;
@@ -82,7 +83,7 @@ void			check_width(const char *c, va_list args, t_param *param)
 		if (ft_isdigit(*c) && *c != 0)
 		{
 			param->width = ft_atoi(c);
-			param->width_minus = (param->width == 0) ? 3 : param->width_minus;
+			param->width_minus = (param->width == 0) ? 3 : 2;
 			return ;
 		}
 		c++;

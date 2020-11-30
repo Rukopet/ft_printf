@@ -12,27 +12,28 @@
 
 #include "ft_printf.h"
 
-void 		ft_hex(unsigned int number, t_param *param)
-{
-	if (number == 0 && param->type == 0)
-		return ;
-}
-
 void 		take_int_args(va_list args,t_param *param)
 {
 	int				number;
 	unsigned int	number1;
+	long int 		number2;
 
 	number = 0;
 	number1 = 0;
-	if (param->type == 'u' || param->type == 'X' || param->type == 'x')
+	if (param->type == 'u' || param->type == 'X' || param->type == 'x' ||
+	param->type == 'p')
 	{
-		param->minus = 0;
-		number1 = va_arg(args, unsigned int);
-		if (param->type == 'X' || param->type == 'x')
-			digits_int_out(number1, param);
+		param->sign_int = '0';
+		if (param->type == 'p')
+		{
+			number2 = va_arg(args, long);
+			digits_int_out(number2, param);
+		}
 		else
+		{
+			number1 = va_arg(args, unsigned int);
 			digits_int_out(number1, param);
+		}
 		return ;
 	}
 	if (param->type == 'i')

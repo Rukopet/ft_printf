@@ -54,6 +54,7 @@ int				check_iteration_params(const char *format, va_list ,
 		t_param *param);
 int				check_format(const char *format, va_list args, t_param *param);
 int				ft_putstr_int(char *s, int fd);
+int				ft_putstr_chars(char *s, int fd, t_param *param);
 
 char 			ft_param(const char *c);
 int				check_param(char c);
@@ -74,7 +75,7 @@ void 			take_arg(va_list args, t_param *param);
 void			check_char(va_list args, t_param *param);
 void 			ft_precision_zero(t_param *param);
 
-void			digits_int_out(long long int digit, t_param *param);
+void			digits_int_out(long int digit, t_param *param);
 void 			take_int_args(va_list args,t_param *param);
 int				out_spaces(char sym, int len);
 
