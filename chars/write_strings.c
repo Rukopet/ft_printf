@@ -15,6 +15,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
+#define PRINT out_param(param);
 
 static int	out_with_precision(char *c, int len, t_param *param)
 {
@@ -62,6 +63,7 @@ void		string_no_width(char *tmp, t_param *param, char tmp_sym)
 		param->count += ft_putstr_chars(tmp, 1, param);
 	if (param->width && param->precision == 0 &&  param->precision_minus != 3)
 	{
+//		printf ("!");
 
 		param->width = (param->width < len) ? len : param->width;
 		if (param->minus)
@@ -114,7 +116,8 @@ void 		take_arg(va_list args, t_param *param)
 	tmp = va_arg(args, char *);
 	if (tmp == NULL)
 	{
-		param->count += ft_putstr_chars("(null)", 1, param);
+		string_char_out("(null)", param);
+		//param->count += ft_putstr_chars("(null)", 1, param);
 		return ;
 	}
 	if (param->precision_minus == 3)

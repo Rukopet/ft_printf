@@ -167,9 +167,10 @@ int main()
 	a = printf ("[%5c]\n", 0);
 	b = ft_printf ("[%5c]\n", 0);
 	printf ("orig = %d\n  my = %d\n\n", a, b);
-//	a = printf ("[%.*s]\n", 0, "hello");
-//	b = ft_printf ("[%.*s]\n", 0, "hello");
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%*s]\n", 3, "hello");
+	b = ft_printf ("[%*s]\n", 3, "hello");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
 //
 //	a = printf ("[%7.*s]\n", 0, "hello");
 //	b = ft_printf ("[%7.*s]\n", 0, "hello");
