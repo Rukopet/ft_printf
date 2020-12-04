@@ -103,8 +103,8 @@ void		check_param_wd(t_param *param, char *string)
 	len = ft_strlen(string);
 	if (param->width != 0 && param->precision != 0)
 	{
-		check_width_len(string, param);
 		check_precision_len(string, param);
+		check_width_len(string, param);
 		if (param->minus)
 			if_param_minus(param, string);
 		else

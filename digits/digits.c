@@ -10,11 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "testingout.h"
+
 #include "ft_printf.h"
 #include "libft.h"
 #include <stdio.h>
 
-static void out_int_digits(t_param *param, char *string, char minus)
+#define PRINT out_param(param);
+
+int			check_zero_precision(char *string, t_param *param)
+{
+	if (string[0] == '0' && param->precision == 0 &&
+	param->precision_minus == 3)
+	{
+		while (param->width != 0)
+		{
+			param->count += ft_putstr_int(" ", 1);
+			param->width--;
+		}
+		return (1);
+	}
+	return (0);
+}
+void		out_int_digits(t_param *param, char *string, char minus)
 {
 	int 	number;
 
@@ -25,13 +43,10 @@ static void out_int_digits(t_param *param, char *string, char minus)
 		param->width -= number;
 		param->count += out_spaces(' ', param->width);
 	}
-//	else
-//	{
-//
-//	}
+
 }
 
-static void no_param_minus(t_param *param, char *string)
+void 		no_param_minus(t_param *param, char *string)
 {
 	int 	len;
 
@@ -77,6 +92,8 @@ void		check_width_len(char *string, t_param *param)
 	number = ft_strlen(string);
 	number = (param->sign_int == '-') ? number + 1 : number;
 	param->width = (param->width < number) ? number : param->width;
+	param->width = (param->width < param->precision) ? param->precision :
+			param->width;
 }
 
 void		digits_int_out(long int digit, t_param *param)
@@ -87,6 +104,8 @@ void		digits_int_out(long int digit, t_param *param)
 		string = ft_itoa_base(digit, 10, &param->sign_int, param);
 	else
 		string = ft_itoa_base(digit, 16, &param->sign_int, param);
+	if (check_zero_precision(string, param))
+		return ;
 	if (param->width != 0 && param->precision == 0)
 	{
 		check_width_len(string, param);

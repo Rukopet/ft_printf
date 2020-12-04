@@ -55,6 +55,7 @@ int			out_spaces(char sym, int len)
 void		string_no_width(char *tmp, t_param *param, char tmp_sym)
 {
 	int		len;
+	int 	tmp_num;
 
 	len = ft_strlen(tmp);
 	if (param->width == 0 && param->precision != 0)
@@ -63,8 +64,6 @@ void		string_no_width(char *tmp, t_param *param, char tmp_sym)
 		param->count += ft_putstr_chars(tmp, 1, param);
 	if (param->width && param->precision == 0 &&  param->precision_minus != 3)
 	{
-//		printf ("!");
-
 		param->width = (param->width < len) ? len : param->width;
 		if (param->minus)
 		{
@@ -74,8 +73,9 @@ void		string_no_width(char *tmp, t_param *param, char tmp_sym)
 		}
 		else
 		{
-			param->width = param->width - len;
-			param->count += out_spaces(tmp_sym, param->width);
+			tmp_num = param->width - len;
+			param->count += out_spaces(tmp_sym, tmp_num);
+			param->width -= tmp_num;
 			param->count += out_with_precision(tmp, param->width, param);
 		}
 	}

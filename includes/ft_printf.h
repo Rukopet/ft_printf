@@ -76,8 +76,11 @@ void			check_char(va_list args, t_param *param);
 void 			ft_precision_zero(t_param *param);
 
 void			digits_int_out(long int digit, t_param *param);
+void 			out_int_digits(t_param *param, char *string, char minus);
+void			no_param_minus(t_param *param, char *string);
 void 			take_int_args(va_list args,t_param *param);
 int				out_spaces(char sym, int len);
+void			out_pointers(char *string, t_param *param);
 
 void			check_width_len(char *string, t_param *param);
 void			check_param_wd(t_param *param, char *string);

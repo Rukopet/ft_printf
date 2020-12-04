@@ -48,7 +48,6 @@ void			check_precision(const char *c, va_list args, t_param *param)
 				param->precision = va_arg(args,	int);
 			if (ft_isdigit(*(c + 1)))
 				param->precision = ft_atoi(c + 1);
-//			printf ("%d==", param->precision_minus);
 			break ;
 		}
 		c++;

@@ -171,22 +171,40 @@ int main()
 	a = printf ("[%*s]\n", 3, "hello");
 	b = ft_printf ("[%*s]\n", 3, "hello");
 	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf ("[%7.*s]\n", 0, "hello");
-//	b = ft_printf ("[%7.*s]\n", 0, "hello");
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//
-//	a = printf ("[%*s]\n", -3, "hello");
-//	b = ft_printf ("[%*s]\n", -3, "hello");
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%7.*s]\n", 0, "hello");
+	b = ft_printf ("[%7.*s]\n", 0, "hello");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+
+	a = printf ("[%*s]\n", -3, "hello");
+	b = ft_printf ("[%*s]\n", -3, "hello");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("%%04.5i 42 == |%04.5i|\n", 20);
+	b = ft_printf ("%%04.5i 42 == |%04.5i|\n", 20);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%5.0x]\n", 0);
+	b = ft_printf ("[%5.0x]\n", 0);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%5.0x]\n", 42);
+	b = ft_printf ("[%5.0x]\n", 42);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+
+	a = printf ("%5p\n", NULL);
+	b = ft_printf ("%5p\n", NULL);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
 
 	return 0;
 }
 
 void out_param(t_param *param)
 {
-	printf ("\n precision - %i", param->precision);
+	printf ("\n\n precision - %i", param->precision);
 	printf ("\n width - %i", param->width);
 	printf ("\n width_minus - %i", param->width_minus);
 	printf ("\n precision_minus - %i", param->precision_minus);
@@ -194,7 +212,7 @@ void out_param(t_param *param)
 	printf ("\n char type - %i", param->type);
 	printf ("\n char zero - %i", param->zero);
 	printf ("\n int count - %i", param->count);
-	printf ("\n char type - %i", param->count);
+	printf ("\n char type - %i\n", param->count);
 //int				precision;
 //int				width;
 //int				width_flag;
