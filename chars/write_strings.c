@@ -117,7 +117,6 @@ void 		take_arg(va_list args, t_param *param)
 	if (tmp == NULL)
 	{
 		string_char_out("(null)", param);
-		//param->count += ft_putstr_chars("(null)", 1, param);
 		return ;
 	}
 	if (param->precision_minus == 3)

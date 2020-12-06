@@ -14,7 +14,6 @@
 
 #include "ft_printf.h"
 #include "libft.h"
-#include "func.h"
 #define PRINT out_param(param);
 #include <stdio.h>
 
@@ -68,8 +67,6 @@ void			check_width(const char *c, va_list args, t_param *param)
 {
 	while (*c != '%' && *c && !check_param(*c) && *c != '.')
 	{
-		if (c[0] == '0' || c[0] == '-')
-			c++;
 		if (*c == '*')
 		{
 			param->width = va_arg(args,	int);
@@ -79,7 +76,7 @@ void			check_width(const char *c, va_list args, t_param *param)
 					param->width * -1 : param->width;
 			return ;
 		}
-		if (ft_isdigit(*c) && *c != 0)
+		if (ft_isdigit(*c) && *c != '0')
 		{
 			param->width = ft_atoi(c);
 			param->width_minus = (param->width == 0) ? 3 : 2;

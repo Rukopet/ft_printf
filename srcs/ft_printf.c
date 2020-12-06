@@ -64,10 +64,10 @@ int				check_iteration_params(const char *format, va_list args,
 	check_zero(format, param);
 	check_width(format, args, param);
 	check_precision(format, args, param);
-
 	while (!check_param(*tmp))
 		tmp++;
 	param->pointer = tmp;
+
 	return (0);
 
 //		if (*tmp == '0' && check_minus((char *)format))
