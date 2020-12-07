@@ -36,7 +36,7 @@ void 		take_int_args(va_list args,t_param *param)
 		}
 		return ;
 	}
-	if (param->type == 'i')
+	if (param->type == 'i' || param->type == 'd')
 	{
 		number = va_arg(args, int);
 		digits_int_out(number, param);

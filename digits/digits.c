@@ -106,7 +106,7 @@ void		digits_int_out(long int digit, t_param *param)
 		string = ft_itoa_base(digit, 16, &param->sign_int, param);
 	if (check_zero_precision(string, param))
 		return ;
-	if (param->width != 0 && param->precision == 0)
+	if (param->width_minus != 0 && param->precision_minus == 0)
 	{
 		check_width_len(string, param);
 		if (param->minus)

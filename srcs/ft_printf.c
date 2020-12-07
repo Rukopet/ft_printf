@@ -24,7 +24,13 @@ int i = 0;
 int				check_iteration_out(const char *format, va_list args, t_param
 *param)
 {
-	if (*format == 's')
+	if (*format == '%')
+	{
+		string_char_out("%", param);
+		format++;
+		return (0);
+	}
+	else if (*format == 's')
 		take_arg(args, param);
 	else if (*format == 'd' || *format == 'i')
 	{
@@ -91,7 +97,7 @@ int				check_iteration_params(const char *format, va_list args,
 int				check_format(const char *format, va_list args, t_param *param)
 {
 
-	while (*format && format)
+	while (*format)
 	{
 		if (*format == '%' && *(format + 1) != '%')
 		{

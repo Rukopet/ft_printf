@@ -10,9 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "testingout.h"
+
 #include "ft_printf.h"
 #include "libft.h"
 #include <stdio.h>
+#define PRINT out_param(param);
 
 void		check_precision_len(char *string, t_param *param)
 {
@@ -46,7 +49,7 @@ void		if_param_minus(t_param *param, char *string)
 	}
 	len = ft_putstr_int(string, 1);
 	param->count += len;
-	while (param->width)
+	while (param->width > 0)
 	{
 		param->count += ft_putstr_int(" ", 1);
 		param->width--;
@@ -56,10 +59,13 @@ void		if_param_minus(t_param *param, char *string)
 void		else_param_minus(t_param *param, char *string)
 {
 	int		len;
+	char 	flag;
 
 	len = ft_strlen(string);
+	flag = 0;
 	while (param->precision != param->width)
 	{
+		flag++;
 		if (param->precision == param->width - 1 &&
 			param->sign_int == '-')
 		{
@@ -73,6 +79,12 @@ void		else_param_minus(t_param *param, char *string)
 	}
 	while (param->precision != len)
 	{
+		if (flag == 0 && param->sign_int == '-')
+		{
+			param->count += ft_putstr_int("-", 1);
+			param->width--;
+			flag++;
+		}
 		param->count += ft_putstr_int("0", 1);
 		param->precision--;
 	}
@@ -101,7 +113,7 @@ void		check_param_wd(t_param *param, char *string)
 	int		len;
 
 	len = ft_strlen(string);
-	if (param->width != 0 && param->precision != 0)
+	if (param->width_minus != 0 && param->precision_minus != 0)
 	{
 		check_precision_len(string, param);
 		check_width_len(string, param);

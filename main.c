@@ -193,8 +193,9 @@ int main()
 	b = ft_printf ("[%5.0x]\n", 42);
 	printf ("orig = %d\n  my = %d\n\n", a, b);
 
-	a = printf ("[%0*i]\n", -7, -54);
-	b = ft_printf ("[%0*i]\n", -7, -54);
+
+	a = printf ("[%-3.7i]\n", -2375);
+	b = ft_printf ("[%-3.7i]\n", -2375);
 	printf ("orig = %d\n  my = %d\n\n", a, b);
 
 	a = printf ("%5p\n", NULL);
@@ -205,13 +206,23 @@ int main()
 	b = ft_printf ("[%-10.8s]\n", NULL);
 	printf ("orig = %d\n  my = %d\n\n", a, b);
 
-	a = printf ("[%-10.8s]\n", "NULL");
-	b = ft_printf ("[%-10.8s]\n", "NULL");
+
+
+	a = printf ("[%7c]\n",  50);
+	b = ft_printf ("[%7c]\n",  50);
 	printf ("orig = %d\n  my = %d\n\n", a, b);
 
+	a = printf ("[%7c]\n",  0);
+	b = ft_printf ("[%7c]\n",  0);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
 
+	a = printf ("[%-7c]\n",  0);
+	b = ft_printf ("[%-7c]\n",  0);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
 
-
+	a = printf ("[%-5%]\n");
+	b = ft_printf ("[%-5%]\n");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
 
 	return 0;
 }

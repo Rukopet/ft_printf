@@ -84,6 +84,7 @@ void			out_pointers(char *string, t_param *param);
 
 void			check_width_len(char *string, t_param *param);
 void			check_param_wd(t_param *param, char *string);
+int 			ft_strlen_char(char *s, t_param *param);
 
 
 

@@ -24,8 +24,12 @@ static int	out_with_precision(char *c, int len, t_param *param)
 	count = 0;
 	if (*c == 0 && param->type == 'c')
 	{
-		ft_putchar_fd(*c, 1);
-		count++;
+//		if (param->width_minus == 0)
+//		{
+//
+//		}
+			ft_putchar_fd(*c, 1);
+			count++;
 		return (count);
 	}
 	while (*c && len)
@@ -57,7 +61,7 @@ void		string_no_width(char *tmp, t_param *param, char tmp_sym)
 	int		len;
 	int 	tmp_num;
 
-	len = ft_strlen(tmp);
+	len = ft_strlen_char(tmp, param);
 	if (param->width == 0 && param->precision != 0)
 		param->count += out_with_precision(tmp, param->precision, param);
 	if (param->width == 0 && param->precision == 0)
@@ -87,9 +91,10 @@ void		string_char_out(char *string, t_param *param)
 	int		len;
 
 	tmp_sym = (param->zero == 1) ? '0' : ' ';
-	if (param->width_minus != 0 && param->precision_minus != 0)
+	if ((param->width_minus != 0 && param->precision_minus != 0) || param->type
+	== 'c')
 	{
-		len = ft_strlen(string);
+		len = ft_strlen_char(string, param);
 		if (param->minus)
 		{
 			param->precision = (param->precision > len) ? len :
@@ -128,7 +133,7 @@ void 		take_arg(va_list args, t_param *param)
 		ft_precision_zero(param);
 		return ;
 	}
-	if (param->width_minus == 3)
-		return ;
+//	if (param->width_minus == 3)
+//		return ;
 	string_char_out(tmp, param);
 }

@@ -32,6 +32,21 @@
 //	}
 //}
 
+int			ft_strlen_char(char *s, t_param *param)
+{
+	size_t			len;
+
+	len = 0;
+	if (param->type == 'c')
+	{
+		if (*s == 0)
+			return (1);
+	}
+	while (*s++)
+		len++;
+	return (len);
+}
+
 void 		check_char(va_list args, t_param *param)
 {
 	char	tmp;
