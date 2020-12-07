@@ -21,16 +21,10 @@
 
 t_param			*default_param_t()
 {
-	t_param *ret;
-//	static char	flag;
+	t_param 	*ret;
 
-
-//	if (flag == 0)
-//	{
-		if(!(ret = malloc(sizeof(t_param))))
-			return (NULL);
-//		flag++;
-//	}
+	if(!(ret = malloc(sizeof(t_param))))
+		return (NULL);
 	ret->width = 0;
 	ret->precision = 0;
 	ret->minus = 0;

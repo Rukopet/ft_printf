@@ -53,7 +53,8 @@ int				check_iteration_out(const char *format, va_list args,
 		t_param *param);
 int				check_iteration_params(const char *format, va_list ,
 		t_param *param);
-int				check_format(const char *format, va_list args, t_param *param);
+int				check_format(const char *format, va_list args, t_param
+*param);
 int				ft_putstr_int(char *s, int fd);
 int				ft_putstr_chars(char *s, int fd, t_param *param);
 
@@ -87,6 +88,8 @@ void			check_width_len(char *string, t_param *param);
 void			check_param_wd(t_param *param, char *string);
 int 			ft_strlen_char(char *s, t_param *param);
 void 			check_pointer(char *string, t_param *param);
+
+void 			ft_free_param(t_param *param);
 
 
 

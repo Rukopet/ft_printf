@@ -21,6 +21,8 @@ int i = 0;
 #define TEST printf("%d", i++);
 #define PRINT out_param(param);
 
+
+
 int				check_iteration_out(const char *format, va_list args, t_param
 *param)
 {
@@ -75,23 +77,6 @@ int				check_iteration_params(const char *format, va_list args,
 	param->pointer = tmp;
 
 	return (0);
-
-//		if (*tmp == '0' && check_minus((char *)format))
-//		{
-//			param->zero = 1;
-//			tmp++;
-//		}
-//		else if (check_minus_char(*tmp, param))
-//			tmp++;
-//		else if (*tmp == '.')
-//		{
-//			tmp++;
-//			if (*tmp == '*')
-//				param->precision = va_arg(args, int);
-//			else
-//				param->precision = ft_atoi(tmp);
-//		}
-//	}
 }
 
 int				check_format(const char *format, va_list args, t_param *param)
@@ -127,23 +112,21 @@ int				check_format(const char *format, va_list args, t_param *param)
 		if (!*format)
 			break ;
 		format++;
-
-
 	}
-	return (0);
+	return (param->count);
 }
 
 int			ft_printf(const char *format, ...)
 {
 	va_list 		args;
 	t_param			*param;
-	const char 		*begin;
+	int				ret;
 
-	begin = format;
 	param = default_param_t();
+	param->count = 0;
 	va_start(args, format);
-	check_format(format, args, param);
+	ret = check_format(format, args, param);
 	va_end(args);
-
-	return (param->count);
+	free(param);
+	return (ret);
 }
