@@ -84,22 +84,26 @@ void		string_no_width(char *tmp, t_param *param, char tmp_sym)
 void		string_char_out(char *string, t_param *param)
 {
 	char 	tmp_sym;
+	int		len;
 
 	tmp_sym = (param->zero == 1) ? '0' : ' ';
-	if (param->width != 0 && param->precision != 0)
+	if (param->width_minus != 0 && param->precision_minus != 0)
 	{
-
-
+		len = ft_strlen(string);
 		if (param->minus)
 		{
+			param->precision = (param->precision > len) ? len :
+							   param->precision;
 			param->count += out_with_precision(string, param->precision, param);
-			param->width = (param->width >= param->precision) ?
+			param->width = (param->width > param->precision) ?
 					param->width - param->precision : 0;
 			param->count += out_spaces(tmp_sym, param->width);
 		}
 		else
 		{
-			param->width = (param->width >= param->precision) ?
+			param->precision = (param->precision > len) ? len :
+					param->precision;
+			param->width = (param->width > param->precision) ?
 					param->width - param->precision : 0;
 			param->count += out_spaces(tmp_sym, param->width);
 			param->count += out_with_precision(string, param->precision, param);
