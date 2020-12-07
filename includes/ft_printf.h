@@ -60,7 +60,7 @@ int				ft_putstr_chars(char *s, int fd, t_param *param);
 
 char 			ft_param(const char *c);
 int				check_param(char c);
-t_param			*default_param_t();
+t_param			*default_param_t(t_param *param);
 int				check_minus_char(char c, t_param *param);
 
 void			check_minus(const char *c, t_param *param);
@@ -87,7 +87,7 @@ void			out_pointers(char *string, t_param *param);
 void			check_width_len(char *string, t_param *param);
 void			check_param_wd(t_param *param, char *string);
 int 			ft_strlen_char(char *s, t_param *param);
-void 			check_pointer(char *string, t_param *param);
+void 			check_pointer(char **string, t_param *param);
 
 void 			ft_free_param(t_param *param);
 

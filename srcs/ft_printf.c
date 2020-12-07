@@ -93,8 +93,7 @@ int				check_format(const char *format, va_list args, t_param *param)
 			format = param->pointer;
 
 			tmp_count = param->count;
-			free(param);
-			param = default_param_t();
+			param = default_param_t(param);
 			param->count = tmp_count;
 		}
 		else
@@ -119,14 +118,13 @@ int				check_format(const char *format, va_list args, t_param *param)
 int			ft_printf(const char *format, ...)
 {
 	va_list 		args;
-	t_param			*param;
+	static t_param	param;
 	int				ret;
 
-	param = default_param_t();
-	param->count = 0;
+	default_param_t(&param);
+	param.count = 0;
 	va_start(args, format);
-	ret = check_format(format, args, param);
+	ret = check_format(format, args, &param);
 	va_end(args);
-	free(param);
 	return (ret);
 }

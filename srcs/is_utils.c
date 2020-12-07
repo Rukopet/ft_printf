@@ -19,12 +19,8 @@
 
 #define PRINT out_param(ret);
 
-t_param			*default_param_t()
+t_param			*default_param_t(t_param* ret)
 {
-	t_param 	*ret;
-
-	if(!(ret = malloc(sizeof(t_param))))
-		return (NULL);
 	ret->width = 0;
 	ret->precision = 0;
 	ret->minus = 0;

@@ -15,18 +15,17 @@
 #include <stdlib.h>
 
 
-void 		check_pointer(char *string, t_param *param)
+void 		check_pointer(char **string, t_param *param)
 {
-//	printf("%d", param->precision_minus);
 	if (param->flag_null == 1 && param->precision_minus == 3)
 	{
-		free(string);
-		string = ft_strdup("0x");
+		free(*string);
+		*string = ft_strdup("0x");
 	}
 	else if (param->flag_null == 1)
 	{
-		free(string);
-		string = ft_strdup("0x0");
+		free(*string);
+		*string = ft_strdup("0x0");
 	}
 }
 void 		take_int_args(va_list args,t_param *param)

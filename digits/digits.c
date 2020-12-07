@@ -15,6 +15,7 @@
 #include "ft_printf.h"
 #include "libft.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 #define PRINT out_param(param);
 
@@ -28,6 +29,8 @@ int			check_zero_precision(char *string, t_param *param)
 			param->count += ft_putstr_int(" ", 1);
 			param->width--;
 		}
+		free(string);
+		string = NULL;
 		return (1);
 	}
 	return (0);
@@ -105,7 +108,7 @@ void		digits_int_out(long int digit, t_param *param)
 	else
 		string = ft_itoa_base(digit, 16, &param->sign_int, param);
 	if (param->type == 'p')
-		check_pointer(string, param);
+		check_pointer(&string, param);
 	else if (check_zero_precision(string, param))
 		return ;
 	if (param->width_minus != 0 && param->precision_minus == 0)
@@ -125,6 +128,8 @@ void		digits_int_out(long int digit, t_param *param)
 	}
 	else
 		check_param_wd(param, string);
+	free(string);
+	string = NULL;
 }
 
 //dodelat vse width precision

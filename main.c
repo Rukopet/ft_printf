@@ -17,77 +17,77 @@ int main()
 {
 	int a;
 	int b = 0;
-//	a = printf("[%24.5s]\n", "0123456789");
-//	b = ft_printf("[%24.5s]\n", "0123456789");
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf("[%24s]\n", "0123456789");
-//	b = ft_printf("[%24s]\n", "0123456789");
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf("[%.5s]\n", "0123456789");
-//	b = ft_printf("[%.5s]\n", "0123456789");
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf("[%-15d]\n", -123456789);
-//	b = ft_printf("[%-15d]\n", -123456789);
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf("[%015d]\n", -123456789);
-//	b = ft_printf("[%015d]\n", -123456789);
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf("[%015d]\n", 123456789);
-//	b = ft_printf("[%015d]\n", 123456789);
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf("[%15d]\n", -123456789);
-//	b = ft_printf("[%15d]\n", -123456789);
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf("[%015.4d]\n", -123456789);
-//	b = ft_printf("[%15d]\n", -123456789);
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf ("[%20.15d]\n", -123456789);
-//	b = ft_printf ("[%20.15d]\n", -123456789);
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf ("[%-20.15d]\n", -123456789);
-//	b = ft_printf ("[%-20.15d]\n", -123456789);
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf ("[%-20.*d]\n", -15, -100);
-//	b = ft_printf ("[%-20.*d]\n", -15, -100);
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf ("[%-20.*d]\n", 15, -101);
-//	b = ft_printf ("[%-20.*d]\n", 15, -101);
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf ("[%*.*d]\n", 21, -12, -123456789);
-//	b = ft_printf ("[%*.*d]\n", 21, -12, -123456789);
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf ("[%d]\n", -123456789);
-//	b = ft_printf ("[%d]\n", -123456789);
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf ("[%-10c]\n", 'F');
-//	b = ft_printf ("[%-10c]\n", 'F');
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf ("[%.*s]\n", -3, "hello");
-//	b = ft_printf ("[%-*.*s]\n", -7, -3, "hello");
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf ("[%-*.*s]\n", -7, -3, "yolo");
-//	b = ft_printf ("[%-*.*s]\n", -7, -3, "yolo");
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf ("[%*.*s]\n",7, 3, "hello");
-//	b = ft_printf ("[%*.*s]\n", 7, 3, "hello");
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
+	a = printf("[%24.5s]\n", "0123456789");
+	b = ft_printf("[%24.5s]\n", "0123456789");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf("[%24s]\n", "0123456789");
+	b = ft_printf("[%24s]\n", "0123456789");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf("[%.5s]\n", "0123456789");
+	b = ft_printf("[%.5s]\n", "0123456789");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf("[%-15d]\n", -123456789);
+	b = ft_printf("[%-15d]\n", -123456789);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf("[%015d]\n", -123456789);
+	b = ft_printf("[%015d]\n", -123456789);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf("[%015d]\n", 123456789);
+	b = ft_printf("[%015d]\n", 123456789);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf("[%15d]\n", -123456789);
+	b = ft_printf("[%15d]\n", -123456789);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf("[%015.4d]\n", -123456789);
+	b = ft_printf("[%15d]\n", -123456789);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%20.15d]\n", -123456789);
+	b = ft_printf ("[%20.15d]\n", -123456789);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%-20.15d]\n", -123456789);
+	b = ft_printf ("[%-20.15d]\n", -123456789);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%-20.*d]\n", -15, -100);
+	b = ft_printf ("[%-20.*d]\n", -15, -100);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%-20.*d]\n", 15, -101);
+	b = ft_printf ("[%-20.*d]\n", 15, -101);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%*.*d]\n", 21, -12, -123456789);
+	b = ft_printf ("[%*.*d]\n", 21, -12, -123456789);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%d]\n", -123456789);
+	b = ft_printf ("[%d]\n", -123456789);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%-10c]\n", 'F');
+	b = ft_printf ("[%-10c]\n", 'F');
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%.*s]\n", -3, "hello");
+	b = ft_printf ("[%-*.*s]\n", -7, -3, "hello");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%-*.*s]\n", -7, -3, "yolo");
+	b = ft_printf ("[%-*.*s]\n", -7, -3, "yolo");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%*.*s]\n",7, 3, "hello");
+	b = ft_printf ("[%*.*s]\n", 7, 3, "hello");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
 
 
 
