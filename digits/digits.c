@@ -104,7 +104,9 @@ void		digits_int_out(long int digit, t_param *param)
 		string = ft_itoa_base(digit, 10, &param->sign_int, param);
 	else
 		string = ft_itoa_base(digit, 16, &param->sign_int, param);
-	if (check_zero_precision(string, param))
+	if (param->type == 'p')
+		check_pointer(string, param);
+	else if (check_zero_precision(string, param))
 		return ;
 	if (param->width_minus != 0 && param->precision_minus == 0)
 	{

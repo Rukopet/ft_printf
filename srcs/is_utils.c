@@ -35,6 +35,7 @@ t_param			*default_param_t()
 	ret->sign_int = 1;
 	ret->precision_minus = 0;
 	ret->width_minus = 0;
+	ret->flag_null = 0;
 	return (ret);
 }
 

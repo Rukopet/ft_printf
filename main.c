@@ -76,7 +76,7 @@ int main()
 //	a = printf ("[%-10c]\n", 'F');
 //	b = ft_printf ("[%-10c]\n", 'F');
 //	printf ("orig = %d\n  my = %d\n\n", a, b);
-
+//
 //	a = printf ("[%.*s]\n", -3, "hello");
 //	b = ft_printf ("[%-*.*s]\n", -7, -3, "hello");
 //	printf ("orig = %d\n  my = %d\n\n", a, b);
@@ -93,30 +93,30 @@ int main()
 
 
 
-//
-//	a = printf ("[%1p]\n", "hello");
-//	b = ft_printf ("[%1p]\n", "hello");
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf ("[%7p]\n", "nice");
-//	b = ft_printf ("[%7p]\n", "nice");
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf ("[%20p]\n", "nice");
-//	b = ft_printf ("[%20p]\n", "nice");
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf ("[%-20p]\n", "nice");
-//	b = ft_printf ("[%-20p]\n", "nice");
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf ("[%*p]\n", -7,"nice");
-//	b = ft_printf ("[%*p]\n", -7,"nice");
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-//
-//	a = printf ("[%.p]\n", "hello");
-//	b = ft_printf ("[%.p]\n", "hello");
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%1p]\n", "hello");
+	b = ft_printf ("[%1p]\n", "hello");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%7p]\n", "nice");
+	b = ft_printf ("[%7p]\n", "nice");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%20p]\n", "nice");
+	b = ft_printf ("[%20p]\n", "nice");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%-20p]\n", "nice");
+	b = ft_printf ("[%-20p]\n", "nice");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%*p]\n", -7,"nice");
+	b = ft_printf ("[%*p]\n", -7,"nice");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%.p]\n", "hello");
+	b = ft_printf ("[%.p]\n", "hello");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
 
 
 
@@ -164,17 +164,17 @@ int main()
 	b = ft_printf ("[%-12p]\n", "123456789");
 	printf ("orig = %d\n  my = %d\n\n", a, b);
 
-	a = printf ("[%5c]\n", 0);
-	b = ft_printf ("[%5c]\n", 0);
-	printf ("orig = %d\n  my = %d\n\n", a, b);
-
-	a = printf ("[%*s]\n", 3, "hello");
-	b = ft_printf ("[%*s]\n", 3, "hello");
-	printf ("orig = %d\n  my = %d\n\n", a, b);
-
-	a = printf ("[%7.*s]\n", 0, "hello");
-	b = ft_printf ("[%7.*s]\n", 0, "hello");
-	printf ("orig = %d\n  my = %d\n\n", a, b);
+//	a = printf ("[%5c]\n", 0);
+//	b = ft_printf ("[%5c]\n", 0);
+//	printf ("orig = %d\n  my = %d\n\n", a, b);
+//
+//	a = printf ("[%*s]\n", 3, "hello");
+//	b = ft_printf ("[%*s]\n", 3, "hello");
+//	printf ("orig = %d\n  my = %d\n\n", a, b);
+//
+//	a = printf ("[%7.*s]\n", 0, "hello");
+//	b = ft_printf ("[%7.*s]\n", 0, "hello");
+//	printf ("orig = %d\n  my = %d\n\n", a, b);
 
 
 	a = printf ("[%*s]\n", -3, "hello");
@@ -198,16 +198,6 @@ int main()
 	b = ft_printf ("[%-3.7i]\n", -2375);
 	printf ("orig = %d\n  my = %d\n\n", a, b);
 
-	a = printf ("%5p\n", NULL);
-	b = ft_printf ("%5p\n", NULL);
-	printf ("orig = %d\n  my = %d\n\n", a, b);
-
-	a = printf ("[%-10.8s]\n", NULL);
-	b = ft_printf ("[%-10.8s]\n", NULL);
-	printf ("orig = %d\n  my = %d\n\n", a, b);
-
-
-
 	a = printf ("[%7c]\n",  50);
 	b = ft_printf ("[%7c]\n",  50);
 	printf ("orig = %d\n  my = %d\n\n", a, b);
@@ -224,6 +214,26 @@ int main()
 	b = ft_printf ("[%-5%]\n");
 	printf ("orig = %d\n  my = %d\n\n", a, b);
 
+	a = printf ("[%-10.8s]\n", NULL);
+	b = ft_printf ("[%-10.8s]\n", NULL);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+
+
+//	a = printf ("%5p\n", NULL);
+//	b = ft_printf ("%5p\n", NULL);
+//	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	a = printf ("[%5.p]\n", NULL);
+	b = ft_printf ("[%5.p]\n", NULL);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+	int c = 0;
+	a = printf ("[%5p]\n", NULL);
+	b = ft_printf ("[%5p]\n", NULL);
+	printf ("orig = %d\n  my = %d\n\n", a, b);
+
+
 	return 0;
 }
 
@@ -238,12 +248,5 @@ void out_param(t_param *param)
 	printf ("\n char zero - %i", param->zero);
 	printf ("\n int count - %i", param->count);
 	printf ("\n char type - %i\n", param->count);
-//int				precision;
-//int				width;
-//int				width_flag;
-//int				precision_flag;
-//char 			minus;
-//char 			zero;
-//char 			type;
-//const char 		*pointer;
+
 }

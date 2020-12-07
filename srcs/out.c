@@ -82,8 +82,6 @@ char		*ft_itoa_base(long int nb, int base, char *sign, t_param *param)
 		*sign = '-';
 		nb *= -1;
 	}
-
-
 	if (param->type == 'X')
 		numbers = ft_strdup("0123456789ABCDEF");
 	else

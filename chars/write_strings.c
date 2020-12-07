@@ -24,10 +24,6 @@ static int	out_with_precision(char *c, int len, t_param *param)
 	count = 0;
 	if (*c == 0 && param->type == 'c')
 	{
-//		if (param->width_minus == 0)
-//		{
-//
-//		}
 			ft_putchar_fd(*c, 1);
 			count++;
 		return (count);

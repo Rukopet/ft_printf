@@ -11,7 +11,24 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
+#include <stdlib.h>
 
+
+void 		check_pointer(char *string, t_param *param)
+{
+//	printf("%d", param->precision_minus);
+	if (param->flag_null == 1 && param->precision_minus == 3)
+	{
+		free(string);
+		string = ft_strdup("0x");
+	}
+	else if (param->flag_null == 1)
+	{
+		free(string);
+		string = ft_strdup("0x0");
+	}
+}
 void 		take_int_args(va_list args,t_param *param)
 {
 	int				number;
@@ -27,6 +44,8 @@ void 		take_int_args(va_list args,t_param *param)
 		if (param->type == 'p')
 		{
 			number2 = va_arg(args, long);
+			if ((void *)number2 == NULL)
+				param->flag_null = 1;
 			digits_int_out(number2, param);
 		}
 		else
