@@ -233,7 +233,13 @@ int main()
 	b = ft_printf ("[%5p]\n", NULL);
 	printf ("orig = %d\n  my = %d\n\n", a, b);
 
+	a = printf("[|%1.4s| et |%-6.8s| et |%4.2s|]\n", "tuuu", "12345", "hu");
+	b = ft_printf("[|%1.4s| et |%-6.8s| et |%4.2s|]\n", "tuuu", "12345", "hu");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
 
+	a = printf("[|%4.2s|]\n", "hu");
+	b = ft_printf("[|%4.2s|]\n", "hu");
+	printf ("orig = %d\n  my = %d\n\n", a, b);
 	return 0;
 }
 

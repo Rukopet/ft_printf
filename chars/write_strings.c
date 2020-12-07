@@ -129,7 +129,5 @@ void 		take_arg(va_list args, t_param *param)
 		ft_precision_zero(param);
 		return ;
 	}
-//	if (param->width_minus == 3)
-//		return ;
 	string_char_out(tmp, param);
 }

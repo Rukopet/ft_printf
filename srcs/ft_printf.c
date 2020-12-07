@@ -96,7 +96,7 @@ int				check_iteration_params(const char *format, va_list args,
 
 int				check_format(const char *format, va_list args, t_param *param)
 {
-
+	int 		tmp_count;
 	while (*format)
 	{
 		if (*format == '%' && *(format + 1) != '%')
@@ -106,6 +106,11 @@ int				check_format(const char *format, va_list args, t_param *param)
 			if (check_iteration_out(param->pointer, args, param))
 				return (1);
 			format = param->pointer;
+
+			tmp_count = param->count;
+			free(param);
+			param = default_param_t();
+			param->count = tmp_count;
 		}
 		else
 			if (*format == '%')

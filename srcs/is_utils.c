@@ -21,17 +21,22 @@
 
 t_param			*default_param_t()
 {
-	t_param		*ret;
+	t_param *ret;
+//	static char	flag;
 
-	if(!(ret = malloc(sizeof(t_param))))
-		return (NULL);
+
+//	if (flag == 0)
+//	{
+		if(!(ret = malloc(sizeof(t_param))))
+			return (NULL);
+//		flag++;
+//	}
 	ret->width = 0;
 	ret->precision = 0;
 	ret->minus = 0;
 	ret->zero = 0;
 	ret->type = 0;
 	ret->pointer = NULL;
-	ret->count = 0;
 	ret->sign_int = 1;
 	ret->precision_minus = 0;
 	ret->width_minus = 0;
