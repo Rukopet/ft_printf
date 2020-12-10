@@ -14,8 +14,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-
-void 		check_pointer(char **string, t_param *param)
+void				check_pointer(char **string, t_param *param)
 {
 	if (param->flag_null == 1 && param->precision_minus == 3)
 	{
@@ -28,14 +27,13 @@ void 		check_pointer(char **string, t_param *param)
 		*string = ft_strdup("0x0");
 	}
 }
-void 		take_int_args(va_list args,t_param *param)
+
+void				take_int_args(va_list args, t_param *param)
 {
 	int				number;
 	unsigned int	number1;
-	long int 		number2;
+	long int		number2;
 
-	number = 0;
-	number1 = 0;
 	if (param->type == 'u' || param->type == 'X' || param->type == 'x' ||
 	param->type == 'p')
 	{
@@ -54,10 +52,5 @@ void 		take_int_args(va_list args,t_param *param)
 		}
 		return ;
 	}
-	if (param->type == 'i' || param->type == 'd')
-	{
-		number = va_arg(args, int);
-		digits_int_out(number, param);
-		return ;
-	}
+	number = ft_integers(args, param);
 }

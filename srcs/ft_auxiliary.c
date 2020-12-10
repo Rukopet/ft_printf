@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 #include "libft.h"
-#include <stdlib.h>
+#include <stdarg.h>
 
 char		*ft_help_itoa(t_param *param, char *sign, int *check, long int *nb)
 {
@@ -31,17 +31,59 @@ char		*ft_help_itoa(t_param *param, char *sign, int *check, long int *nb)
 	return (ret);
 }
 
-void		ft_check_format_help(const char **tmp, t_param *param)
+void		ft_check_format_help(const char **tmp, t_param *param, char flag)
 {
-	if (**tmp == '%')
+	if (flag == 1)
 	{
 		ft_putchar_fd(**tmp, 1);
-		param->count++;
 		(*tmp)++;
+		param->count++;
 	}
 	else
 	{
 		ft_putchar_fd(**tmp, 1);
 		param->count++;
 	}
+}
+
+int			ft_integers(va_list args, t_param *param)
+{
+	int		number;
+
+	number = 0;
+	if (param->type == 'i' || param->type == 'd')
+	{
+		number = va_arg(args, int);
+		digits_int_out(number, param);
+		return (number);
+	}
+	return (number);
+}
+
+void		ft_param_minus_help(t_param *param, char *flag)
+{
+	if (*flag == 0 && param->sign_int == '-')
+	{
+		param->count += ft_putstr_int("-", 1);
+		param->width--;
+		*flag += 1;
+	}
+	param->count += ft_putstr_int("0", 1);
+	param->precision--;
+}
+
+void		ft_no_minus_help(int len, t_param *param, char *string)
+{
+	while (len != param->width)
+	{
+		write(1, " ", 1);
+		param->width--;
+		param->count++;
+	}
+	if (param->sign_int == '-')
+	{
+		param->count += ft_putstr_int("-", 1);
+		param->width--;
+	}
+	param->count += ft_putstr_int(string, 1);
 }

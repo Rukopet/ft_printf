@@ -29,7 +29,7 @@ int			ft_strlen_char(char *s, t_param *param)
 	return (len);
 }
 
-void 		check_char(va_list args, t_param *param)
+void		check_char(va_list args, t_param *param)
 {
 	char	tmp;
 	char	b[2];

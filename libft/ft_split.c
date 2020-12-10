@@ -48,6 +48,16 @@ static int		count_word(const char *str, char c)
 	return (count);
 }
 
+static void		ft_free(char **ret)
+{
+	while (*ret)
+	{
+		free(*ret);
+		ret++;
+	}
+	free(ret);
+}
+
 char			**ft_split(char const *s, char c)
 {
 	char		**ret;
@@ -64,11 +74,7 @@ char			**ft_split(char const *s, char c)
 		{
 			if (!(ret[index] = word_alloc(s, c)))
 			{
-				while (*ret)
-				{
-					free(*ret);
-					ret++;
-				}
+				ft_free(ret);
 				return (NULL);
 			}
 			index++;

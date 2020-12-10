@@ -12,7 +12,6 @@
 
 #include "ft_printf.h"
 #include "libft.h"
-#include <stdio.h>
 #include <stdarg.h>
 
 int				check_iteration_out(const char *format, va_list args, t_param
@@ -27,27 +26,15 @@ int				check_iteration_out(const char *format, va_list args, t_param
 	else if (*format == 's')
 		take_arg(args, param);
 	else if (*format == 'd' || *format == 'i')
-	{
-		param->type = 'i';
 		take_int_args(args, param);
-	}
 	else if (*format == 'c')
 		check_char(args, param);
 	else if (*format == 'u')
-	{
-		param->type = 'u';
 		take_int_args(args, param);
-	}
 	else if (*format == 'x' || *format == 'X')
-	{
-		param->type = *format;
 		take_int_args(args, param);
-	}
 	else if (*format == 'p')
-	{
-		param->type = 'p';
 		take_int_args(args, param);
-	}
 	else
 		return (1);
 	return (0);
@@ -67,39 +54,28 @@ int				check_iteration_params(const char *format, va_list args,
 	while (!check_param(*tmp))
 		tmp++;
 	param->pointer = tmp;
-
 	return (0);
 }
 
 int				check_format(const char *format, va_list args, t_param *param)
 {
-	int 		tmp_count;
 	while (*format)
 	{
 		if (*format == '%' && *(format + 1) != '%')
 		{
-
 			check_iteration_params(format + 1, args, param);
 			if (check_iteration_out(param->pointer, args, param))
 				return (1);
 			format = param->pointer;
-
-			tmp_count = param->count;
 			param = default_param_t(param);
-			param->count = tmp_count;
 		}
 		else
+		{
 			if (*format == '%')
-			{
-				ft_putchar_fd(*format, 1);
-				format++;
-				param->count++;
-			}
+				ft_check_format_help(&format, param, 1);
 			else
-			{
-				ft_putchar_fd(*format, 1);
-				param->count++;
-			}
+				ft_check_format_help(&format, param, 2);
+		}
 		if (!*format)
 			break ;
 		format++;
@@ -107,9 +83,9 @@ int				check_format(const char *format, va_list args, t_param *param)
 	return (param->count);
 }
 
-int			ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
-	va_list 		args;
+	va_list			args;
 	static t_param	param;
 	int				ret;
 

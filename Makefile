@@ -18,21 +18,16 @@ HEADER = includes/ft_printf.h
 FLAG = -Wall -Wextra -Werror
 PATHSRC = srcs digits chars
 SRCLIST = $(wildcard $(dir)/*.c)
-LIBOBJ = $(wildcard $(PATHLIB)/*.o)
 SRC = $(foreach dir, $(PATHSRC), $(SRCLIST))
 INC = -I./includes/ -I./libft/
 OBJ = $(SRC:.c=.o)
 
 .PHONY: all lib clean fclean re
 
-all: $(NAME) $(SRC)
+all: lib $(NAME) $(SRC)
 
-$(NAME): lib $(OBJ) $(HEADE) 
-	$(CC) $(FLAG) $(SRC) main.c $(INC) -L$(PATHLIB) -lft
-	ar rcs $(NAME) $(OBJ) $(LIBOBJ)
-
-test: all
-	$(CC) $(FLAG) $(SRC) main_test.c $(INC) -L$(PATHLIB) -lft
+$(NAME): $(OBJ) $(HEADER) 
+	ar rcs $(NAME) $(OBJ) $(PATHLIB)/$(NAMELIB)
 
 %.o: %.c $(HEADER)
 	$(CC) -c $(FLAG) $< $(INC) -o $@

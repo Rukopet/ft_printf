@@ -12,6 +12,7 @@
 
 #include "ft_printf.h"
 #include "libft.h"
+#include <stdio.h>
 
 int main()
 {
@@ -234,6 +235,8 @@ int main()
 	b = ft_printf("[|%4.2s|]\n", "hu");
 	printf ("orig = %d\n  my = %d\n\n", a, b);
 	return 0;
+
+
 }
 
 void out_param(t_param *param)

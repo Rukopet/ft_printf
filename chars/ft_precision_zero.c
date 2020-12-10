@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void 		ft_precision_zero(t_param *param)
+void		ft_precision_zero(t_param *param)
 {
 	while (param->width != 0)
 	{

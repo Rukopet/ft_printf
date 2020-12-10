@@ -12,7 +12,6 @@
 
 #include "ft_printf.h"
 #include "libft.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 int			check_zero_precision(char *string, t_param *param)
@@ -31,9 +30,10 @@ int			check_zero_precision(char *string, t_param *param)
 	}
 	return (0);
 }
+
 void		out_int_digits(t_param *param, char *string, char minus)
 {
-	int 	number;
+	int		number;
 
 	if (minus != -1)
 	{
@@ -42,12 +42,11 @@ void		out_int_digits(t_param *param, char *string, char minus)
 		param->width -= number;
 		param->count += out_spaces(' ', param->width);
 	}
-
 }
 
-void 		no_param_minus(t_param *param, char *string)
+void		no_param_minus(t_param *param, char *string)
 {
-	int 	len;
+	int		len;
 
 	len = ft_strlen(string);
 	if (param->zero)
@@ -59,7 +58,7 @@ void 		no_param_minus(t_param *param, char *string)
 		}
 		while (len != param->width)
 		{
-			write (1, "0", 1);
+			write(1, "0", 1);
 			param->width--;
 			param->count++;
 		}
@@ -68,25 +67,13 @@ void 		no_param_minus(t_param *param, char *string)
 	else
 	{
 		len = (param->sign_int == '-') ? len + 1 : len;
-		while (len != param->width)
-		{
-			write (1, " ", 1);
-			param->width--;
-			param->count++;
-		}
-		if (param->sign_int == '-')
-		{
-			param->count += ft_putstr_int("-", 1);
-			param->width--;
-		}
-		param->count += ft_putstr_int(string, 1);
+		ft_no_minus_help(len, param, string);
 	}
-
 }
 
 void		check_width_len(char *string, t_param *param)
 {
-	int 	number;
+	int		number;
 
 	number = ft_strlen(string);
 	number = (param->sign_int == '-') ? number + 1 : number;
@@ -97,7 +84,7 @@ void		check_width_len(char *string, t_param *param)
 
 void		digits_int_out(long int digit, t_param *param)
 {
-	char 	*string;
+	char	*string;
 
 	if (param->type != 'x' && param->type != 'X' && param->type != 'p')
 		string = ft_itoa_base(digit, 10, &param->sign_int, param);
@@ -108,20 +95,7 @@ void		digits_int_out(long int digit, t_param *param)
 	else if (check_zero_precision(string, param))
 		return ;
 	if (param->width_minus != 0 && param->precision_minus == 0)
-	{
-		check_width_len(string, param);
-		if (param->minus)
-		{
-			if (param->sign_int == '-')
-			{
-				param->count += ft_putstr_int("-", 1);
-				param->width--;
-			}
-			out_int_digits(param, string, param->minus);
-		}
-		else
-			no_param_minus(param, string);
-	}
+		ft_int_out_help(param, string);
 	else
 		check_param_wd(param, string);
 	free(string);
