@@ -13,9 +13,7 @@
 #include "libft.h"
 #include "ft_printf.h"
 #include <stdarg.h>
-#include <stdio.h>
 #include <stdlib.h>
-#define PRINT out_param(param);
 
 static int	out_with_precision(char *c, int len, t_param *param)
 {

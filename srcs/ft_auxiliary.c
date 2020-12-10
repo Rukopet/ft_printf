@@ -11,9 +11,37 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 #include <stdlib.h>
 
-void 		ft_free_param(t_param *param)
+char		*ft_help_itoa(t_param *param, char *sign, int *check, long int *nb)
 {
-	free(param);
+	char	*ret;
+
+	if (*nb < 0)
+	{
+		*sign = '-';
+		*nb *= -1;
+	}
+	*check = (param->type == 'p') ? 2 : 0;
+	if (param->type == 'X')
+		ret = ft_strdup("0123456789ABCDEF");
+	else
+		ret = ft_strdup("0123456789abcdef");
+	return (ret);
+}
+
+void		ft_check_format_help(const char **tmp, t_param *param)
+{
+	if (**tmp == '%')
+	{
+		ft_putchar_fd(**tmp, 1);
+		param->count++;
+		(*tmp)++;
+	}
+	else
+	{
+		ft_putchar_fd(**tmp, 1);
+		param->count++;
+	}
 }

@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+CC = clang
 NAME = libft.a
 FLAG = -Wall -Wextra -Werror
 SRC =	ft_memcmp.c ft_memchr.c ft_memcpy.c ft_memccpy.c ft_memmove.c	\

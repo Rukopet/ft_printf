@@ -89,12 +89,6 @@ void			check_param_wd(t_param *param, char *string);
 int 			ft_strlen_char(char *s, t_param *param);
 void 			check_pointer(char **string, t_param *param);
 
-void 			ft_free_param(t_param *param);
-
-
-
-
-
-void out_param(t_param *param);
+char			*ft_help_itoa(t_param *param, char *sign, int *check, long int *nb);
 
 #endif

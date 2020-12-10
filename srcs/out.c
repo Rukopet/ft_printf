@@ -13,9 +13,9 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-int		ft_putstr_int(char *s, int fd)
+int			ft_putstr_int(char *s, int fd)
 {
-	int count;
+	int		count;
 
 	count = 0;
 	if (!s)
@@ -29,12 +29,11 @@ int		ft_putstr_int(char *s, int fd)
 	return (count);
 }
 
-int		ft_putstr_chars(char *s, int fd, t_param *param)
+int			ft_putstr_chars(char *s, int fd, t_param *param)
 {
-	int count;
+	int		count;
 
 	count = 0;
-
 	if (s[0] == '\0' && param->type == 'c')
 	{
 		ft_putchar_fd(s[0], fd);
@@ -49,13 +48,12 @@ int		ft_putstr_chars(char *s, int fd, t_param *param)
 		s++;
 		count++;
 	}
-
 	return (count);
 }
 
 static int	ft_itoa_base_count(long int nb, int base, t_param *param)
 {
-	int 	i;
+	int		i;
 
 	if (nb == 0)
 		return (1);
@@ -75,23 +73,13 @@ char		*ft_itoa_base(long int nb, int base, char *sign, t_param *param)
 	char	*ret;
 	char	*numbers;
 	int		i;
-	int 	check;
+	int		check;
 
-	if (nb < 0)
-	{
-		*sign = '-';
-		nb *= -1;
-	}
-	if (param->type == 'X')
-		numbers = ft_strdup("0123456789ABCDEF");
-	else
-		numbers = ft_strdup("0123456789abcdef");
-	ret = NULL;
+	numbers = ft_help_itoa(param, sign, &check, &nb);
 	i = ft_itoa_base_count(nb, base, param);
 	if (!(ret = (char*)malloc(sizeof(char) * i + 1)))
 		return (NULL);
 	ret[i--] = '\0';
-	check = (param->type == 'p') ? 2 : 0;
 	while (i >= check)
 	{
 		ret[i--] = numbers[nb % base];

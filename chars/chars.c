@@ -13,24 +13,6 @@
 #include "libft.h"
 #include "ft_printf.h"
 #include <stdarg.h>
-#include <unistd.h>
-
-//static void out_with_space(char c, t_param *param)
-//{
-//	if (param->minus == -1)
-//	{
-//		while (param->width != 1)
-//		{
-//			param->count += ft_putstr_int(" ", 1);
-//			param->width--;
-//		}
-//		param->count += write(1, &c, 1);
-//	}
-//	else if (param->minus != -1)
-//	{
-//		while (param->width != )
-//	}
-//}
 
 int			ft_strlen_char(char *s, t_param *param)
 {

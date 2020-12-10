@@ -10,11 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+CC = clang
 NAME = libftprintf.a
 PATHLIB = ./libft
 NAMELIB = libft.a
-FLAG = -g -Wall -Wextra
+HEADER = includes/ft_printf.h
+FLAG = -Wall -Wextra -Werror
 PATHSRC = srcs digits chars
 SRCLIST = $(wildcard $(dir)/*.c)
 LIBOBJ = $(wildcard $(PATHLIB)/*.o)
@@ -26,14 +27,14 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME) $(SRC)
 
-$(NAME): lib $(OBJ)
+$(NAME): lib $(OBJ) $(HEADE) 
 	$(CC) $(FLAG) $(SRC) main.c $(INC) -L$(PATHLIB) -lft
 	ar rcs $(NAME) $(OBJ) $(LIBOBJ)
 
 test: all
 	$(CC) $(FLAG) $(SRC) main_test.c $(INC) -L$(PATHLIB) -lft
 
-.c.o:
+%.o: %.c $(HEADER)
 	$(CC) -c $(FLAG) $< $(INC) -o $@
 
 lib:

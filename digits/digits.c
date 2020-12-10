@@ -10,14 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "testingout.h"
-
 #include "ft_printf.h"
 #include "libft.h"
 #include <stdio.h>
 #include <stdlib.h>
-
-#define PRINT out_param(param);
 
 int			check_zero_precision(char *string, t_param *param)
 {
@@ -131,5 +127,3 @@ void		digits_int_out(long int digit, t_param *param)
 	free(string);
 	string = NULL;
 }
-
-//dodelat vse width precision

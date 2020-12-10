@@ -10,12 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "testingout.h"
-
 #include "ft_printf.h"
 #include "libft.h"
-#include <stdio.h>
-#define PRINT out_param(param);
 
 void		check_precision_len(char *string, t_param *param)
 {
@@ -122,7 +118,7 @@ void		check_param_wd(t_param *param, char *string)
 		else
 			else_param_minus(param, string);
 	}
-	else// (param->width == -1 && param->precision != -1)
+	else
 	{
 		check_param_donly(param, string);
 	}

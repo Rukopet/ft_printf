@@ -10,18 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "testingout.h"
-
 #include "ft_printf.h"
 #include "libft.h"
 #include <stdio.h>
 #include <stdarg.h>
-
-int i = 0;
-#define TEST printf("%d", i++);
-#define PRINT out_param(param);
-
-
 
 int				check_iteration_out(const char *format, va_list args, t_param
 *param)

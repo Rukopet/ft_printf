@@ -218,17 +218,10 @@ int main()
 	b = ft_printf ("[%-10.8s]\n", NULL);
 	printf ("orig = %d\n  my = %d\n\n", a, b);
 
-
-
-//	a = printf ("%5p\n", NULL);
-//	b = ft_printf ("%5p\n", NULL);
-//	printf ("orig = %d\n  my = %d\n\n", a, b);
-
 	a = printf ("[%5.p]\n", NULL);
 	b = ft_printf ("[%5.p]\n", NULL);
 	printf ("orig = %d\n  my = %d\n\n", a, b);
 
-	int c = 0;
 	a = printf ("[%5p]\n", NULL);
 	b = ft_printf ("[%5p]\n", NULL);
 	printf ("orig = %d\n  my = %d\n\n", a, b);

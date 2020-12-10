@@ -10,16 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "testingout.h"
-
 #include "ft_printf.h"
 #include <stdarg.h>
 #include <stdlib.h>
-#include <stdio.h>
 
-#define PRINT out_param(ret);
-
-t_param			*default_param_t(t_param* ret)
+t_param			*default_param_t(t_param *ret)
 {
 	ret->width = 0;
 	ret->precision = 0;
@@ -67,9 +62,8 @@ int				check_minus_char(char c, t_param *param)
 	return (0);
 }
 
-char 			ft_param(const char *c)
+char			ft_param(const char *c)
 {
-	
 	while (*c != '%' && *c)
 	{
 		if (check_param(*c))
